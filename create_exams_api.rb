@@ -10,15 +10,15 @@ def post_x_times(x, user, subdomain)
   admin_key = "dow4pPBKo3CUjxlBI9uVfA"
 
   header_superuser = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Token token='+super_key ,
-    'Accept': 'application/vnd.procwise.v3'
+    'Content-Type' => 'application/json',
+    'Authorization' => 'Token token=' + super_key,
+    'Accept' => 'application/vnd.procwise.v3'
   }
 
   header_admin = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Token token='+admin_key,
-    'Accept': 'application/vnd.procwise.v3'
+    'Content-Type' => 'application/json',
+    'Authorization' => 'Token token=' + admin_key,
+    'Accept' => 'application/vnd.procwise.v3'
   }
 
   secret = super_secret
