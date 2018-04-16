@@ -7,15 +7,15 @@ require 'json'
 # Localhost superuser secret
 # secret_key = 'fnw9N3rQJi4GlJaKj9RU8q6NOmaEIbVYPODCZZzXsjY'
 
-puts ""
-puts "------------------------------------//------------------------------------"
-puts "Create a hash that contains all the parameters that you want to send"
-puts "Call generate_params_with_signature with the hash as the first argument and the user_secret as the second"
-puts ""
-puts "Note: timestamp and nonce are automatically generated and added to params:"
-puts "timestamp: (Time.now.to_f*1000).to_i\nnonce: Time.now.to_i"
-puts "------------------------------------//------------------------------------"
-puts ""
+#
+# ------------------------------------//------------------------------------
+# Create a hash that contains all the parameters that you want to send
+# Call generate_params_with_signature with the hash as the first argument and the user_secret as the second
+# 
+# Note: timestamp and nonce are automatically generated and added to params:
+# timestamp: (Time.now.to_f*1000).to_i\nnonce: Time.now.to_i
+# ------------------------------------//------------------------------------
+#
 
 # Order the nested params
 def generate_params_with_signature(params, user_secret)
