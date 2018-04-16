@@ -11,13 +11,13 @@ def post_x_times(x, user, subdomain)
 
   header_superuser = {
     'Content-Type': 'application/json',
-    'Authorization': 'Token token=#{super_key}',
+    'Authorization': 'Token token='+super_key ,
     'Accept': 'application/vnd.procwise.v3'
   }
 
   header_admin = {
     'Content-Type': 'application/json',
-    'Authorization': 'Token token=#{admin_key}',
+    'Authorization': 'Token token='+admin_key,
     'Accept': 'application/vnd.procwise.v3'
   }
 
