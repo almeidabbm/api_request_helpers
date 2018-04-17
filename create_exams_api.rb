@@ -5,8 +5,9 @@ require 'json'
 
 def post_x_times(x, user, subdomain)
   super_secret = "0mp_lRbjFcHcfrd0tP4JmF_kapmUz9oi0yKsa-82veo"
-  admin_secret = "pqe4JnGE5fIQBeR2Sw0MyFwcyd3XhdXHsRMhkx39dSo"
   super_key = "lTssCz38fpjC5XhjA7m5ww"
+  
+  admin_secret = "pqe4JnGE5fIQBeR2Sw0MyFwcyd3XhdXHsRMhkx39dSo"
   admin_key = "dow4pPBKo3CUjxlBI9uVfA"
 
   header_superuser = {
@@ -55,6 +56,7 @@ def generate_random_params_create_exam
     type: 'record_review',
     name: [*('A'..'Z')].sample(8).join,
     global_proctoring: true,
-    global_reviewing: true
+    global_reviewing: true,
+    duration_minutes: 60
   }
 end
