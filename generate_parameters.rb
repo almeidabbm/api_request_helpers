@@ -2,11 +2,6 @@ require 'openssl'
 require 'time'
 require 'json'
 
-# Localhost superuser token
-# api_token = 'a8H0FMO0fPAiVY8fBN8FBw'
-# Localhost superuser secret
-# secret_key = 'fnw9N3rQJi4GlJaKj9RU8q6NOmaEIbVYPODCZZzXsjY'
-
 #
 # ------------------------------------//------------------------------------
 # Create a hash that contains all the parameters that you want to send
@@ -19,7 +14,7 @@ require 'json'
 
 # Order the nested params
 def generate_params_with_signature(params, user_secret)
-  params[:nonce] = Time.now.to_i
+  params[:nonce] = Time.now.to_i.to_s
   params[:timestamp] = (Time.now.to_f*1000).to_i
   signature = OpenSSL::HMAC.hexdigest(
                   OpenSSL::Digest.new('sha256'),
