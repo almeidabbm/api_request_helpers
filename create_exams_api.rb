@@ -4,9 +4,14 @@ require 'uri'
 require 'json'
 
 def post_x_times(x, user, subdomain)
+  # Branch 2548
   super_secret = "0mp_lRbjFcHcfrd0tP4JmF_kapmUz9oi0yKsa-82veo"
   super_key = "lTssCz38fpjC5XhjA7m5ww"
-  
+
+  # Localhost Bruno
+  # super_secret = "Q3qcguCMwBoyLU2uk39FQ_nzMts_Jn6QNTszWXgF00g"
+  # super_key = "7ylb6g4VDqDK9qFvPTpc3w"
+
   admin_secret = "pqe4JnGE5fIQBeR2Sw0MyFwcyd3XhdXHsRMhkx39dSo"
   admin_key = "dow4pPBKo3CUjxlBI9uVfA"
 
@@ -32,6 +37,7 @@ def post_x_times(x, user, subdomain)
 
   for i in 1..x do
     params = generate_params_with_signature(generate_random_params_create_exam, secret)
+    puts params
     create_exam_post(subdomain, params, header)
   end
 end
