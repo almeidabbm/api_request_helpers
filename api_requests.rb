@@ -3,6 +3,10 @@ require "net/http"
 require "uri"
 require "json"
 
+#############
+# Constants #
+#############
+
 # Domain to where the request is done
 DOMAIN = "https://localhost.proctorexam.com:3001"
 
@@ -19,6 +23,10 @@ HTTP_HEADER = {
   "Accept" => "application/vnd.procwise.v3"
 }
 
+######################
+# Exams - Controller #
+######################
+
 # POST /exams
 def create_exam(params)
   post("/api/v3/exams", params)
@@ -29,10 +37,18 @@ def add_student(params)
   post("/api/v3/exams/#{params[:id]}/add_student", params)
 end
 
+################################
+# StudentSessions - Controller #
+################################
+
 # POST /exams/:exam_id/student_sessions
-def create_student(params)
+def create_student_session(params)
   post("/api/v3/exams/#{params[:exam_id]}/student_sessions", params)
 end
+
+#######################
+# Auxiliary Functions #
+#######################
 
 def post(url_path, params)
   uri = URI.parse(DOMAIN + url_path)
