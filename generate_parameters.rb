@@ -18,7 +18,8 @@ require 'json'
 # Sign the params
 def generate_params_with_signature(params, user_secret)
   params_copy = params.clone
-  params_copy[:nonce] = Time.now.to_i
+
+  params_copy[:nonce] = (Time.now.to_f*1000).to_i
   params_copy[:timestamp] = (Time.now.to_f*1000).to_i
   signature = OpenSSL::HMAC.hexdigest(
                   OpenSSL::Digest.new('sha256'),

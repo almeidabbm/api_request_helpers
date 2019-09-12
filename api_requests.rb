@@ -52,25 +52,33 @@ end
 
 def post(url_path, params, number_of_requests)
   uri = URI.parse(DOMAIN + url_path)
-  signed_params = generate_params_with_signature(params, SECRET_KEY)
 
-  # Request objects
-  http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = true
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  request = Net::HTTP::Post.new(uri.request_uri, HTTP_HEADER)
-  request.body = signed_params.to_json
 
-  async_request(number_of_requests, http, request)
+
+  async_request(params, number_of_requests, uri)
 end
 
-def async_request(number_of_requests, http, request)
+def async_request(params, number_of_requests, uri)
   threads = number_of_requests.times.map do |i|
-    Thread.new {
-      response = http.request(request)
-      puts response.body
-    }
+    start_thread(uri, params)
   end
 
   threads.each &:join
+end
+
+def start_thread(uri, params)
+  Thread.new {
+    # Request objects
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(uri.request_uri, HTTP_HEADER)
+
+    # Signing the params here so that every request has a different signature, nonce and timestamp
+    signed_params = generate_params_with_signature(params, SECRET_KEY)
+    request.body = signed_params.to_json
+
+    response = http.request(request)
+    p response.body
+  }
 end
