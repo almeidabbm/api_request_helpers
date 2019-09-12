@@ -11,10 +11,10 @@ require "json"
 DOMAIN = "https://localhost.proctorexam.com:3001"
 
 # Key used to sign the request
-SECRET_KEY = "QKyW3Z7_gQfK-tmJtDF8pAH2wbryLvYgUrA8iUaPBO8"
+SECRET_KEY = "nzkwzGzv6Zgz2dSzLJsoqgEeAi9wsEzf1de_pwbWqeU"
 
 # Key sent in the header to identify the user
-API_TOKEN = "_WhA0nyQoLCpcP0qPnufNA"
+API_TOKEN = "uEUlnMmSIGVPnCyWSwOrjw"
 
 # HTTP Header
 HTTP_HEADER = {
@@ -68,6 +68,7 @@ def async_request(number_of_requests, http, request)
   threads = number_of_requests.times.map do |i|
     Thread.new {
       response = http.request(request)
+      puts response.body
     }
   end
 
