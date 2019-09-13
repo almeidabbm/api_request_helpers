@@ -79,6 +79,8 @@ def start_thread(uri, params)
     request.body = signed_params.to_json
 
     response = http.request(request)
-    p response.body
+
+    # Writes the response to an HTML file so we can see it
+    File.write("response_#{signed_params[:nonce]}.html", response.body)
   }
 end
